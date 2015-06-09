@@ -19,7 +19,6 @@ public class Eval {
 		
 	}
 	
-	
 	/**
 	 * Assert if <b>compared</b> value is <b>equal</b> to <b>input</b> parameter.
 	 * @param input		The input parameter

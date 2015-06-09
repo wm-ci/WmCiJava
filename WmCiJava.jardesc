@@ -12,5 +12,6 @@
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <javaElement handleIdentifier="=WmCiJava/src&lt;com.wmci.assertion"/>
+        <javaElement handleIdentifier="=WmCiJava/src&lt;com.wmci.util"/>
     </selectedElements>
 </jardesc>
