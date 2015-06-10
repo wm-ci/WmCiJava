@@ -4,6 +4,8 @@
 package com.wmci.util;
 
 /**
+ * <b>Java back-end</b> to support <b>Utility JavaServices</b> on <b>WebMethods Integration Server</b>
+ *  
  * @author cecheverria
  *
  */
@@ -17,6 +19,7 @@ public class Util {
 	
 	/**
 	 * A clone from <b>SQL Nvl</b> function.
+	 * 
 	 * @param input				The input parameter
 	 * @param defaultValue		The value to be returned in case that input parameter is considered null
 	 * @param treatEmptyAsNull	Set as true if you want to treat the Empty values as a null values.
@@ -32,19 +35,17 @@ public class Util {
 				;
 	}
 
-	public static String doNotMapNullOrBlanks(String input) {
+	/**
+	 * A clone from <b>SQL Decode</b> function.
+	 * 
+	 * @param input				The input parameter
+	 * @param conditions		The key-pair conditions to ve evaluated
+	 * @param defaultValue		The value to be returned in case that input parameter does not match any key-pair condition
+	 * @return
+	 */
+	public static String decode(String input, String[] conditions, String defaultValue) {
 
-		/*if(input != null && !input.trim().equals(""))
-			return input.trim();
-		else 
-			return null;*/
-
-		resturn input != null && !input.trim().equals("") ? input.trim() : null;
-	}
-
-	public static String decode(String input, String conditions, String defaultValue) {
-
-			//Main logic 
+		//Main logic 
 		String match = null;
 		int totalComparations = conditions.length/2,
 			i = 0;		
@@ -55,7 +56,6 @@ public class Util {
 			
 			if(input != null) {
 				//System.out.printf("value[%s] - compare[%s] - [%s]\n", value, returnValue, (input.equals(value)));
-								
 				match = input.equals(value) ? returnValue : null;
 			}
 			else
@@ -67,11 +67,37 @@ public class Util {
 		//Return value
 		return	match != null ? 
 				match : 
-				defaultValue //If there are not match on compared values, then return elseValue
+				defaultValue //If there are not match on compared values, then return default value
 				;
 	}
+	
+	/**
+	 * Evaluates if input parameter can be returned as it, otherwise it will be returned as null. 
+	 * 
+	 * This back-end will easy the work doing mappings on <b>Integration Server</b>, when you want to 
+	 * map an object only if exist and contains value different than empty. In that way <b>you will
+	 * be able to avoid doing branches</b> to ask for an object and then mapping if it exists.
+	 * 
+	 * @param input		The input parameter
+	 * @return
+	 */
+	public static String doNotMapNullOrBlanks(String input) {
+		
+		/*if(input != null && !input.trim().equals(""))
+			return input.trim();
+		else 
+			return null;*/
+		
+		return input != null && !input.trim().equals("") ? input.trim() : null;
+	}
 
-	public static String buildPairConditionsArray(String input) {
+	/**
+	 * Build an string array to hold pair conditions like you does on <b>SQL Decode</b> function.
+	 * 
+	 * @param input		The input parameter
+	 * @return
+	 */
+	public static String[] buildPairConditionsArray(String input) {
 
 		//Main logic 
 		String[] array = {},
