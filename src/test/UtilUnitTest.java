@@ -83,12 +83,39 @@ public class UtilUnitTest {
 		assertEquals("Case decode-006: Input is empty, matching condition, return value must be (returnValue = " + inputIsEmpty + ")", result, inputIsEmpty);
 	}
 	
-	
 	/**
-	 * Test method for {@link com.wmci.util.Util#doNotMapNullOrBlanks(String)}.
+	 * Test method for {@link com.wmci.util.Util#ddoNotMapNullOrBlanks(String)}.
 	 */
 	@Test
-	public final void testDoNotMapNullOrBlanks() {
+	public final void testDdoNotMapNullOrBlanks() {
+		String result = null;
 		
+		result = Util.doNotMapNullOrBlanks(null);
+		assertEquals("Case doNotMapNullOrBlank-001: Input is null, it must not be mapped", result, null);
+		
+		result = Util.doNotMapNullOrBlanks(empty);
+		assertEquals("Case doNotMapNullOrBlank-002: Input is empty, it must not be mapped", result, null);
+		
+		result = Util.doNotMapNullOrBlanks(manySpaces);
+		assertEquals("Case doNotMapNullOrBlank-003: Input is manySpaces, it must not be mapped", result, null);
+		
+		result = Util.doNotMapNullOrBlanks(input);
+		assertEquals("Case doNotMapNullOrBlank-004: Input has a correct value, it must be mapped", result, input);
+	}
+	
+	/**
+	 * Test method for {@link com.wmci.util.Util#buildPairConditionsArray(String)}.
+	 */
+	@Test
+	public final void testBuildPairConditionsArray() {
+		String[] result;
+		
+		result = Util.buildPairConditionsArray("one,r_one,two,r_two,{null}, is null,");
+		
+		assertEquals("Case testBuildPairConditionsArray-001: Input is null, it must not be mapped", result[0], "one");
+		assertEquals("Case testBuildPairConditionsArray-002: Input is null, it must not be mapped", result[1], "r_one");
+		assertEquals("Case testBuildPairConditionsArray-003: Input is null, it must not be mapped", result[4], null);
+		assertEquals("Case testBuildPairConditionsArray-003: Input is null, it must not be mapped", result[5], " is null");
+
 	}
 }

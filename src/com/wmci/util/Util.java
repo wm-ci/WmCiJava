@@ -39,13 +39,12 @@ public class Util {
 	 * A clone from <b>SQL Decode</b> function.
 	 * 
 	 * @param input				The input parameter
-	 * @param conditions		The key-pair conditions to ve evaluated
+	 * @param conditions		The key-pair conditions to be evaluated
 	 * @param defaultValue		The value to be returned in case that input parameter does not match any key-pair condition
 	 * @return
 	 */
 	public static String decode(String input, String[] conditions, String defaultValue) {
-
-		//Main logic 
+		
 		String match = null;
 		int totalComparations = conditions.length/2,
 			i = 0;		
@@ -64,7 +63,6 @@ public class Util {
 			i++;
 		}
 		
-		//Return value
 		return	match != null ? 
 				match : 
 				defaultValue //If there are not match on compared values, then return default value
@@ -75,18 +73,13 @@ public class Util {
 	 * Evaluates if input parameter can be returned as it, otherwise it will be returned as null. 
 	 * 
 	 * This back-end will easy the work doing mappings on <b>Integration Server</b>, when you want to 
-	 * map an object only if exist and contains value different than empty. In that way <b>you will
+	 * map an object only if exist and contains a value different than empty. In that way <b>you will
 	 * be able to avoid doing branches</b> to ask for an object and then mapping if it exists.
 	 * 
 	 * @param input		The input parameter
 	 * @return
 	 */
 	public static String doNotMapNullOrBlanks(String input) {
-		
-		/*if(input != null && !input.trim().equals(""))
-			return input.trim();
-		else 
-			return null;*/
 		
 		return input != null && !input.trim().equals("") ? input.trim() : null;
 	}
@@ -99,7 +92,6 @@ public class Util {
 	 */
 	public static String[] buildPairConditionsArray(String input) {
 
-		//Main logic 
 		String[] array = {},
 				 tmp = input == null || input.trim().equals("") ?
 					   new String[]{} :
@@ -112,7 +104,6 @@ public class Util {
 			array[i] = item.equals("{null}") ? null : item;
 		}
 		
-		//Return value
 		return  array;
 	}
 }	
