@@ -1,2 +1,2 @@
 language: java
-script: graddle test
+script: gradle test
