@@ -1,2 +1,18 @@
 language: java
-script: gradle test
+script: gradle build
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "es+yDnOjzm77g/pa3x3tRMxOsmFhCY3H6DCFHUVHgYOo6+K6ihaaMqC+ipOGjXLa/+OxsebVwPoQXefIBOatQXp/2/KGNqAAtHY5RPY8yVyT6Cnh4fk/FF8z9jRJ8hJHRy5APWlUvsHSURRZLEP/WPfiFSDo5/BXeLrsEZGWlGoo9KfACix4RbvkzM4Xa5QNQt9bj6ir615v3Jtir4Sw36Bn5WMtbbSdt6h9nTEmksdQcnYJ9ni/lGEiUy2cskmvNSwRzHXc/oTaYrjFj6TWgA+CkBpbtr04t4bSYF0IHOSXrKfyxZl9u05MKa7KPzKY0cH4zuA9yEV3zBUegcOq+Pbk72J2UQyOS1rIKKyJlbYR5Db5n+R5cbak4ux/DnK3f3qbX8fMjzOTk23lpxcjWXPviFD0iPnfw6uR3/wyqQG7ahuYIPqzJijTb9DwERybKlqFfKw8sp0y+JLCvEtQucpGltnNh4vbPrXROZzNeVIA5V7KEiGnHR6FGjyjDGbWvNymNahF3AILuPHDEEB9LPthtNlYORT5pCFDuvDihRlXkTYFRlGJGibk1gEOgHkIRbfapERwuAiDLC91xVowymi2prUWigUzEg1yzV48d6n1Fs7wVoy01zYQi4H75S+uoGA+4eeIssjj3G7UDqDTewj3c5d00Bh5BCyhA5EKGzA="
+
+addons:
+  coverity_scan:
+    project:
+      name: "wm-ci/WmCiJava"
+      description: "Build submitted via Travis CI"
+    notification_email: wmci.fw@gmail.com
+    build_command_prepend: ""
+    build_command:   "gradle build"
+    branch_pattern: coverity_scan
