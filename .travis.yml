@@ -3,7 +3,8 @@ language: java
 jdk:
   - oraclejdk7
 
-script: gradle build
+script: gradle build --rerun-tasks
+# script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then make ; fi
 
 env:
   global:
@@ -18,5 +19,5 @@ addons:
       description: "Build submitted via Travis CI"
       notification_email: wmci.fw@gmail.com
       build_command_prepend: ""
-      build_command:   "gradle build"
+      build_command:   "gradle build --rerun-tasks"
       branch_pattern: coverity_scan
