@@ -7,11 +7,15 @@ libx/
 
 # Other files and folders
 .settings/
-.gradle
+.gradle/
+.gitignore.swp
 
 # Remove Coverty Scan
 WmCiJava.zip
 cov-int/
+
+#.*
+#!/.gitignore
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
