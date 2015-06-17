@@ -9,6 +9,7 @@ libx/
 .settings/
 .gradle/
 .gitignore.swp
+**.DS_Store
 
 # Remove Coverty Scan
 WmCiJava.zip
