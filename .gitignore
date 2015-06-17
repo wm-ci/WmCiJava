@@ -15,6 +15,7 @@ libx/
 WmCiJava.zip
 cov-int/
 
+# To ignore any hidden file/dir
 #.*
 #!/.gitignore
 
