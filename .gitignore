@@ -7,7 +7,7 @@ libx/
 
 # Other files and folders
 .settings/
-.gradle/
+.gradle
 
 # Remove Coverty Scan
 WmCiJava.zip
