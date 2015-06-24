@@ -58,7 +58,8 @@ public class Util {
 				match = input.equals(value) ? returnValue : null;
 			}
 			else
-				match = input == value ? returnValue : null;
+				//Compare when input is send as null 
+				match = null == value ? returnValue : null;
 			
 			i++;
 		}
