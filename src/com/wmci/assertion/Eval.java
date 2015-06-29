@@ -132,16 +132,13 @@ public class Eval {
 	 * @param input			The input parameter
 	 * @param compare		The string to be search into input
 	 * @param conditions	The key-pair conditions to be evaluated
-	 * @param defaultValue	The value to be returned in case that input parameter does not match any key-pair condition
 	 * @return
 	 */
-	public static Result decode(String input, String compare, String[] conditions, String defaultValue) {
+	public static Result decode(String input, String compare, String[] conditions) {
 		
 		Result result = new Result(null, false);
 		
 		try {
-			String settedValue = compare;
-			
 			boolean match = false;
 			int totalComparations = conditions.length/2,
 				i = 0;		
@@ -150,20 +147,23 @@ public class Eval {
 				String value = conditions[i*2+0];
 				String returnValue = conditions[i*2+1];
 				
-				//System.out.printf("value[%s] - compare[%s] - [%s]\n", value, returnValue, (input.equals(value) && settedValue.equals(returnValue)));
+				//System.out.printf("value[%s] - compare[%s] - [%s]\n", value, returnValue, (input.equals(value) && compare.equals(returnValue)));
 				
-				match = ((input == null && value == null) | input.equals(value)) && settedValue.equals(returnValue);
+				match = ((input == null && value == null) && (compare == null && returnValue == null)) 
+						|| 
+						(input == null && value == null) && (compare != null && compare.equals(returnValue))
+						|| 
+						((input != null && input.equals(value)) && (compare != null && compare.equals(returnValue)))
+						|| 
+						((input != null && input.equals(value)) && (compare == null && returnValue == null))
+						;
 				i++;
 			}
 			
 			result.setSuccess(				   
-							match ? 
-							match :
-							defaultValue == null ?
-							false :
-							settedValue.equals(defaultValue)	//If there are not match on compared values, then verified if elseValue does match 
+							match
 							);
-			result.setMessage(result.isSuccess() ? null : "Key-pair parameters [" + input + "][" + compare + "] are not containde on conditions array");
+			result.setMessage(result.isSuccess() ? null : "Key-pair parameters [" + input + "][" + compare + "] is not present on conditions array");
 			
 		} catch (Exception e) {
 			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
