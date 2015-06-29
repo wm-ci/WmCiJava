@@ -66,7 +66,7 @@ public class Util {
 		
 		return	match != null ? 
 				match : 
-				defaultValue //If there are not match on compared values, then return default value
+				defaultValue //If there is not match on compared values, then return default value
 				;
 	}
 	
@@ -86,7 +86,7 @@ public class Util {
 	}
 
 	/**
-	 * Build an string array to hold pair conditions like you does on <b>SQL Decode</b> function.
+	 * Builds an string array to hold pair conditions like you does on <b>SQL Decode</b> function.
 	 * 
 	 * @param input		The input parameter
 	 * @return
