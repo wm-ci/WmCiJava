@@ -3,6 +3,7 @@
  */
 package com.wmci.assertion;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -147,8 +148,6 @@ public class Eval {
 				String value = conditions[i*2+0];
 				String returnValue = conditions[i*2+1];
 				
-				//System.out.printf("value[%s] - compare[%s] - [%s]\n", value, returnValue, (input.equals(value) && compare.equals(returnValue)));
-				
 				match = ((input == null && value == null) && (compare == null && returnValue == null)) 
 						|| 
 						(input == null && value == null) && (compare != null && compare.equals(returnValue))
@@ -160,9 +159,7 @@ public class Eval {
 				i++;
 			}
 			
-			result.setSuccess(				   
-							match
-							);
+			result.setSuccess(match);
 			result.setMessage(result.isSuccess() ? null : "Key-pair parameters [" + input + "][" + compare + "] is not present on conditions array");
 			
 		} catch (Exception e) {
@@ -171,6 +168,54 @@ public class Eval {
 		
 		return result;
 	}
-
-
+	
+	/**
+	 * Assert if <b>input</b> value is <b>great than</b> to <b>compare</b> parameter.
+	 * @param input		The input parameter
+	 * @param compare	The string to be compared to input parameter
+	 * @return
+	 */
+	public static Result greatThan(String input, String compare) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			result.setSuccess(
+					input==null || compare==null 
+					? false
+					: (new BigDecimal(input)).compareTo(new BigDecimal(compare)) == 1
+					);
+			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] is not great than input[" + input + "]");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Assert if <b>input</b> value is <b>great than or equals</b> to <b>compare</b> parameter.
+	 * @param input		The input parameter
+	 * @param compare	The string to be compared to input parameter
+	 * @return
+	 */
+	public static Result greatThanEqual(String input, String compare) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			result.setSuccess(
+					input==null || compare==null 
+					? false
+					: (new BigDecimal(input)).compareTo(new BigDecimal(compare)) >= 0
+					);
+			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] is not great than or equals to input[" + input + "]");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
+		}
+		
+		return result;
+	}
 }

@@ -181,7 +181,8 @@ public class EvalUnitTest {
 															+ "3,three,"
 															+ ",empty,"
 															+ "{null},null value,"
-															+ "null value,{null}"
+															+ "null value,{null},"
+															+ "{null},{null}"
 															+ "");
 		
 		result = Eval.decode("1", "one", conditions);
@@ -207,5 +208,57 @@ public class EvalUnitTest {
 		
 		result = Eval.decode("null value", null, conditions);
 		assertTrue("Case decode-009: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.decode(null, null, conditions);
+		assertTrue("Case decode-010: " + result.getMessage(), result.isSuccess());
 	}
+	
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#greatThan(String, String)}.
+	 */	@Test
+	public final void testGreatThan() {
+		
+		result = Eval.greatThan("1", "2");
+		assertFalse("Case greatThan-001: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThan("2", "2");
+		assertFalse("Case greatThan-002: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThan("3", "2");
+		assertTrue("Case greatThan-003: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThan("1000.01", "1000.02");
+		assertFalse("Case greatThan-004: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThan("1000.02", "1000.02");
+		assertFalse("Case greatThan-005: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThan("1000.03", "1000.02");
+		assertTrue("Case greatThan-006: " + result.getMessage(), result.isSuccess());
+	}
+	
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#greatThanEqual(String, String)}.
+	 */	@Test
+	public final void testGreatThanEqual() {
+		
+		result = Eval.greatThanEqual("1", "2");
+		assertFalse("Case greatThan-001: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThanEqual("2", "2");
+		assertTrue("Case greatThan-002: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThanEqual("3", "2");
+		assertTrue("Case greatThan-003: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThanEqual("1000.01", "1000.02");
+		assertFalse("Case greatThan-004: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThanEqual("1000.02", "1000.02");
+		assertTrue("Case greatThan-005: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.greatThanEqual("1000.03", "1000.02");
+		assertTrue("Case greatThan-006: " + result.getMessage(), result.isSuccess());
+	}
+	
 }
