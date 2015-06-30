@@ -107,7 +107,39 @@ public class EvalUnitTest {
 		result = Eval.notEqual(input, input);
 		assertFalse(result.getMessage(), result.isSuccess());
 	}
-
+	
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#matches(String, String)}.
+	 */
+	@Test
+	public final void testMatches() {
+		String input = "Hello, how are you today friend..?";
+		
+		//Null value test case
+		result = Eval.matches(input, null);
+		assertFalse(result.getMessage(), result.isSuccess());
+		
+		//Null value test case
+		result = Eval.matches(null, input);
+		assertFalse(result.getMessage(), result.isSuccess());
+		
+		//Null values test case
+		result = Eval.matches(null, null);
+		assertFalse(result.getMessage(), result.isSuccess());
+		
+		result = Eval.matches(input, ".*Hello.*");
+		assertTrue(result.getMessage(), result.isSuccess());
+		
+		result = Eval.matches(input, "Hell*how");
+		assertFalse(result.getMessage(), result.isSuccess());
+		
+		result = Eval.matches(input, ".*today.*");
+		assertTrue(result.getMessage(), result.isSuccess());
+		
+		result = Eval.matches(input, "todayX");
+		assertFalse(result.getMessage(), result.isSuccess());
+	}
+	
 	/**
 	 * Test method for {@link com.wmci.assertion.Eval#contains(java.lang.String, java.lang.String)}.
 	 */
@@ -260,27 +292,25 @@ public class EvalUnitTest {
 		result = Eval.greatThanEqual("1000.03", "1000.02");
 		assertTrue("Case greatThan-006: " + result.getMessage(), result.isSuccess());
 	}
-		
-		
-		/**
-		 * Test method for {@link com.wmci.assertion.Eval#isNull(String)}.
-		 */	@Test
-		public final void testIsNull() {
-			
-			result = Eval.isNull("1");
-			assertFalse("Case isNull-001: " + result.getMessage(), result.isSuccess());
-			
-			result = Eval.isNull("");
-			assertFalse("Case isNull-002: " + result.getMessage(), result.isSuccess());
-			
-			result = Eval.isNull(null);
-			assertTrue("Case isNull-003: " + result.getMessage(), result.isSuccess());
-			
-			result = Eval.isNull(" ");
-			assertFalse("Case isNull-004: " + result.getMessage(), result.isSuccess());
-		 }
 	
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#isNull(String)}.
+	 */	@Test
+	public final void testIsNull() {
 		
+		result = Eval.isNull("1");
+		assertFalse("Case isNull-001: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.isNull("");
+		assertFalse("Case isNull-002: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.isNull(null);
+		assertTrue("Case isNull-003: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.isNull(" ");
+		assertFalse("Case isNull-004: " + result.getMessage(), result.isSuccess());
+	 }
+	
 	/**
 	 * Test method for {@link com.wmci.assertion.Eval#isNotNull(String)}.
 	 */	@Test
@@ -297,5 +327,53 @@ public class EvalUnitTest {
 		
 		result = Eval.isNotNull(" ");
 		assertTrue("Case isNotNull-004: " + result.getMessage(), result.isSuccess());
-	 }
+	}
+	
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#lessThan(String, String)}.
+	 */	@Test
+	public final void testLessThan() {
+		
+		result = Eval.lessThan("1", "2");
+		assertTrue("Case lessThan-001: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThan("2", "2");
+		assertFalse("Case lessThan-002: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThan("3", "2");
+		assertFalse("Case lessThan-003: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThan("1000.01", "1000.02");
+		assertTrue("Case lessThan-004: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThan("1000.02", "1000.02");
+		assertFalse("Case lessThan-005: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThan("1000.03", "1000.02");
+		assertFalse("Case lessThan-006: " + result.getMessage(), result.isSuccess());
+	}
+	
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#lessThanEqual(String, String)}.
+	 */	@Test
+	public final void testLessThanEqual() {
+		
+		result = Eval.lessThanEqual("1", "2");
+		assertTrue("Case lessThanEqual-001: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThanEqual("2", "2");
+		assertTrue("Case lessThanEqual-002: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThanEqual("3", "2");
+		assertFalse("Case lessThanEqual-003: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThanEqual("1000.01", "1000.02");
+		assertTrue("Case lessThanEqual-004: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThanEqual("1000.02", "1000.02");
+		assertTrue("Case lessThanEqual-005: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.lessThanEqual("1000.03", "1000.02");
+		assertFalse("Case lessThanEqual-006: " + result.getMessage(), result.isSuccess());
+	}
 }

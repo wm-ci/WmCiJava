@@ -78,6 +78,30 @@ public class Eval {
 	}
 	
 	/**
+	 * Assert if <b>compared</b> value <b>maches</b> to <b>input</b> parameter.
+	 * @param input		The input parameter
+	 * @param compare	The string to be matched to input
+	 * @return
+	 */
+	public static Result matches(String input, String compare) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			Pattern pattern = Pattern.compile(compare);		//Regex
+			Matcher matcher = pattern.matcher(input);		//Input
+			
+			result.setSuccess(matcher.matches());
+			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] do not matches input[" + input + "]");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
+		}
+		
+		return result;
+	}
+	
+	/**
 	 * Assert if <b>compared</b> value is <b>contained</b> into <b>input</b> parameter.
 	 * @param input		The input parameter
 	 * @param compare	The string to be search into input
@@ -258,4 +282,54 @@ public class Eval {
 		
 		return result;
 	}
+	
+	/**
+	 * Assert if <b>input</b> value is <b>less than</b> to <b>compare</b> parameter.
+	 * @param input		The input parameter
+	 * @param compare	The string to be compared to input parameter
+	 * @return
+	 */
+	public static Result lessThan(String input, String compare) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			result.setSuccess(
+					input==null || compare==null 
+					? false
+					: (new BigDecimal(input)).compareTo(new BigDecimal(compare)) == -1
+					);
+			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] is not less than input[" + input + "]");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Assert if <b>input</b> value is <b>less than or equals</b> to <b>compare</b> parameter.
+	 * @param input		The input parameter
+	 * @param compare	The string to be compared to input parameter
+	 * @return
+	 */
+	public static Result lessThanEqual(String input, String compare) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			result.setSuccess(
+					input==null || compare==null 
+					? false
+					: (new BigDecimal(input)).compareTo(new BigDecimal(compare)) <= 0
+					);
+			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] is not less than or equals to input[" + input + "]");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
+		}
+		
+		return result;
+	}	
 }
