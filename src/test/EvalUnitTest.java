@@ -260,5 +260,42 @@ public class EvalUnitTest {
 		result = Eval.greatThanEqual("1000.03", "1000.02");
 		assertTrue("Case greatThan-006: " + result.getMessage(), result.isSuccess());
 	}
+		
+		
+		/**
+		 * Test method for {@link com.wmci.assertion.Eval#isNull(String)}.
+		 */	@Test
+		public final void testIsNull() {
+			
+			result = Eval.isNull("1");
+			assertFalse("Case isNull-001: " + result.getMessage(), result.isSuccess());
+			
+			result = Eval.isNull("");
+			assertFalse("Case isNull-002: " + result.getMessage(), result.isSuccess());
+			
+			result = Eval.isNull(null);
+			assertTrue("Case isNull-003: " + result.getMessage(), result.isSuccess());
+			
+			result = Eval.isNull(" ");
+			assertFalse("Case isNull-004: " + result.getMessage(), result.isSuccess());
+		 }
 	
+		
+	/**
+	 * Test method for {@link com.wmci.assertion.Eval#isNotNull(String)}.
+	 */	@Test
+	public final void testIsNotNull() {
+		
+		result = Eval.isNotNull("1");
+		assertTrue("Case isNotNull-001: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.isNotNull("");
+		assertTrue("Case isNotNull-002: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.isNotNull(null);
+		assertFalse("Case isNotNull-003: " + result.getMessage(), result.isSuccess());
+		
+		result = Eval.isNotNull(" ");
+		assertTrue("Case isNotNull-004: " + result.getMessage(), result.isSuccess());
+	 }
 }

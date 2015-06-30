@@ -218,4 +218,44 @@ public class Eval {
 		
 		return result;
 	}
+	
+	/**
+	 * Assert if <b>input</b> value is <b>null</b>.
+	 * @param input		The input parameter
+	 * @return
+	 */
+	public static Result isNull(String input) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			result.setSuccess(input==null);
+			result.setMessage(result.isSuccess() ? null : "Input parameter [" + input + "] is not null");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "]");
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Assert if <b>input</b> value is not <b>null</b>.
+	 * @param input		The input parameter
+	 * @return
+	 */
+	public static Result isNotNull(String input) {
+		
+		Result result = new Result(null, false);
+		
+		try {
+			result.setSuccess(input!=null);
+			result.setMessage(result.isSuccess() ? null : "Input parameter [" + input + "] is null");
+			
+		} catch (Exception e) {
+			result.setMessage("Exception evaluating input [" + input + "]");
+		}
+		
+		return result;
+	}
 }
