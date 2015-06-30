@@ -4,11 +4,12 @@
 # WmCiJava
 > The Java Api backend for WmCi (WebMethods Continuous integration)
 
-[Installation guide](/#How-to-install)
+[Installation guide](#How-to-install)
 
 
 ## Testing Framework
 The testing framework backend is totally hold on class `com.wmci.assertion.Eval`, a total of 10 testing methods are offered in the backend, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.assertion` package, see below the supported methods:
+
 
 || Java Method | IS Java Service|
 |-|-----|-----|
@@ -24,6 +25,7 @@ The testing framework backend is totally hold on class `com.wmci.assertion.Eval`
 |10.| Eval.isNotNull(String input) | WmCi.eval:isNotNull |
 |11.| Eval.lessThan(String input, String compare) | WmCi.eval:lessThan |
 |12.| Eval.lessThanEqual(String input, String compare) | WmCi.eval:lessThanEqual |
+
 
 ## Utility API
 TODO:
