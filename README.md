@@ -11,7 +11,7 @@
 The testing framework backend is totally hold on class `com.wmci.assertion.Eval`, a total of 10 testing methods are offered in the backend, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.assertion` package, see below the supported methods:
 
 
-| | Java Method | IS Java Service|
+ | Java Method | IS Java Service|
 |-|-|-|
 |1.| Eval.equal(String input, String compare) | WmCi.eval:equal |
 |2.| Eval.notEqual(String input, String compare) | WmCi.eval:notEqual |
