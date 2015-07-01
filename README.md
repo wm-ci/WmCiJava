@@ -8,7 +8,7 @@
 
 
 ## Testing Framework
-The testing framework backend is totally hold on `com.wmci.assertion.Eval` class, a total of 10 testing methods are offered in the backend, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.assertion` package, see below the supported methods:
+The testing framework backend is totally hold on `com.wmci.assertion.Eval` class, a total of 10 testing methods are offered in the backend, each one has it's own counterpart `WebMethods Integration Server` `Java Service` on `WmCi.assertion` package, see below the supported methods:
 
    |Java Method|IS Java Service
 ---|---|---
@@ -28,7 +28,7 @@ The testing framework backend is totally hold on `com.wmci.assertion.Eval` class
 
 
 ## Utility API
-Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testing methods are offered, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.util` package, see below the supported methods:
+Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testing methods are offered, each one has it's own counterpart `WebMethods Integration Server` `Java Service` on `WmCi.util` package, see below the supported methods:
 
    |Java Method|IS Java Service
 ---|---|---
@@ -39,4 +39,9 @@ Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testin
 
 
 ## How to install
-TODO:
+Download `WmCiJava.jar` from [jar repository](https://scan.coverity.com/projects/5457) into your `download_path`, and then copy the jar into `WmCi` IS Package static directory.
+
+```
+$ cd your_IS_home_directory
+$ cp /download_path/WmCiJava.jar packages/WmCi/code/jars/static/.
+```
