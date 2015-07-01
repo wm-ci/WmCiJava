@@ -2,7 +2,7 @@
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/5457/badge.svg)](https://scan.coverity.com/projects/5457)
 
 # WmCiJava
-> The Java Api backend for [WmCi (WebMethods Continuous integration)](https://github.com/wm-ci/WmCi)
+> The Java Api backend for [WmCi (WebMethods Continuous integration)](https://github.com/wm-ci/WmCi/tree/develop)
 
 [Installation guide](#how-to-install)
 
