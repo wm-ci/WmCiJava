@@ -8,7 +8,7 @@
 
 
 ## Testing Framework
-The testing framework backend is totally hold on class `com.wmci.assertion.Eval`, a total of 10 testing methods are offered in the backend, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.assertion` package, see below the supported methods:
+The testing framework backend is totally hold on `com.wmci.assertion.Eval` class, a total of 10 testing methods are offered in the backend, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.assertion` package, see below the supported methods:
 
    |Java Method|IS Java Service
 ---|---|---
@@ -28,7 +28,15 @@ The testing framework backend is totally hold on class `com.wmci.assertion.Eval`
 
 
 ## Utility API
-TODO:
+Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testing methods are offered, each one has it's counterpart `WebMethods Integration Server` `Java Service` on `WmCi.util` package, see below the supported methods:
+
+   |Java Method|IS Java Service
+---|---|---
+1.|Util.nvl(String input, String defaultValue, boolean treatEmptyAsNull)|WmCi.util:nvl
+2.|Util.decode(String input, String[] conditions, String defaultValue)|WmCi.util:decode
+3.|Util.doNotMapNullOrBlanks(String input)|WmCi.util:doNotMapNullOrBlanks
+4.|Util.buildPairConditionsArray(String input)|WmCi.util:buildPairConditionsArray
+
 
 ## How to install
 TODO:
