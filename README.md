@@ -2,7 +2,7 @@
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/5457/badge.svg)](https://scan.coverity.com/projects/5457)
 
 # WmCiJava
-> The Java Api backend for WmCi (WebMethods Continuous integration)
+> The Java Api backend for [WmCi (WebMethods Continuous integration)](https://github.com/wm-ci/WmCi)
 
 [Installation guide](#how-to-install)
 
@@ -12,23 +12,23 @@ The testing framework backend is totally hold on `com.wmci.assertion.Eval` class
 
    |Java Method|IS Java Service
 ---|---|---
-1.|Eval.equal(String input, String compare)|WmCi.eval:equal
-2.|Eval.notEqual(String input, String compare)|WmCi.eval:notEqual
-3.|Eval.matches(String input, String compare)|WmCi.eval:matches
-4.|Eval.contains(String input, String compare)|WmCi.eval:contains
-5.|Eval.notContains(String input, String compare)|WmCi.eval:notContains
-6.|Eval.decode(String input, String compare, String[] conditions)|WmCi.eval:decode
-7.|Eval.greatThan(String input, String compare)|WmCi.eval:greatThan
-8.|Eval.greatThanEqual(String input, String compare)|WmCi.eval:greatThanEqual
-9.|Eval.isNull(String input)|WmCi.eval:isNull
-10.|Eval.isNotNull(String input)|WmCi.eval:isNotNull
-11.|Eval.lessThan(String input, String compare)|WmCi.eval:lessThan
-12.|Eval.lessThanEqual(String input, String compare)| WmCi.eval:lessThanEqual
+1.|Eval.equal(String input, String compare)|WmCi.assertion:equal
+2.|Eval.notEqual(String input, String compare)|WmCi.assertion:notEqual
+3.|Eval.matches(String input, String compare)|WmCi.assertion:matches
+4.|Eval.contains(String input, String compare)|WmCi.assertion:contains
+5.|Eval.notContains(String input, String compare)|WmCi.assertion:notContains
+6.|Eval.decode(String input, String compare, String[] conditions)|WmCi.assertion:decode
+7.|Eval.greatThan(String input, String compare)|WmCi.assertion:greatThan
+8.|Eval.greatThanEqual(String input, String compare)|WmCi.assertion:greatThanEqual
+9.|Eval.isNull(String input)|WmCi.assertion:isNull
+10.|Eval.isNotNull(String input)|WmCi.assertion:isNotNull
+11.|Eval.lessThan(String input, String compare)|WmCi.assertion:lessThan
+12.|Eval.lessThanEqual(String input, String compare)| WmCi.assertion:lessThanEqual
 
 
 
 ## Utility API
-Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testing methods are offered, each one has it's own counterpart `WebMethods Integration Server` `Java Service` on `WmCi.util` package, see below the supported methods:
+Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testing methods are offered, each one has it's own counterpart `WebMethods IS` `Java Service` on `WmCi.util` package, see below the supported methods:
 
    |Java Method|IS Java Service
 ---|---|---
@@ -39,7 +39,7 @@ Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testin
 
 
 ## How to install
-Download `WmCiJava.jar` from [jar repository](https://scan.coverity.com/projects/5457) into your `download_path`, and then copy the jar into `WmCi` IS Package static directory.
+Download `WmCiJava.jar` from [jar repository](https://scan.coverity.com/projects/5457) into your preferred `download_path`, and then copy the jar into `WmCi` IS Package static directory.
 
 ```
 $ cd your_IS_home_directory
