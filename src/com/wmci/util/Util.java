@@ -3,6 +3,10 @@
  */
 package com.wmci.util;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * <b>Java back-end</b> to support <b>Utility JavaServices</b> on <b>WebMethods Integration Server</b>
  *  
@@ -107,4 +111,12 @@ public class Util {
 		
 		return  array;
 	}
-}	
+	
+	/**
+	 * Get current time stamp casted to String
+	 * @return
+	 */
+	public static String getTimeStamp() {
+		return (new Timestamp(System.currentTimeMillis())).toString();
+	}
+}
