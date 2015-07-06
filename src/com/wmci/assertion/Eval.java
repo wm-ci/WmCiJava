@@ -92,7 +92,7 @@ public class Eval {
 			Matcher matcher = pattern.matcher(input);		//Input
 			
 			result.setSuccess(matcher.matches());
-			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] do not matches input[" + input + "]");
+			result.setMessage(result.isSuccess() ? null : "Compare parameter [" + compare + "] does not matches input[" + input + "]");
 			
 		} catch (Exception e) {
 			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
