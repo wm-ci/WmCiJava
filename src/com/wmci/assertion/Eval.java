@@ -184,7 +184,7 @@ public class Eval {
 			}
 			
 			result.setSuccess(match);
-			result.setMessage(result.isSuccess() ? null : "Key-pair parameters [" + input + "][" + compare + "] is not present on conditions array");
+			result.setMessage(result.isSuccess() ? null : "Key-pair parameters [" + input + "][" + compare + "] are not present on conditions array");
 			
 		} catch (Exception e) {
 			result.setMessage("Exception evaluating input [" + input + "] and compare [" + compare + "]");
