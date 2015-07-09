@@ -207,7 +207,7 @@ public class EvalUnitTest {
 	 * Test method for {@link com.wmci.assertion.Eval#decode(String, String, String[], String)}.
 	 */	@Test
 	public final void testDecode() {
-		String[] conditions = Util.buildPairConditionsArray(""
+		String[] keyPairConditions = Util.buildPairConditionsArray(""
 															+ "1,one,"
 															+ "2,two,"
 															+ "3,three,"
@@ -217,31 +217,31 @@ public class EvalUnitTest {
 															+ "{null},{null}"
 															+ "");
 		
-		result = Eval.decode("1", "one", conditions);
+		result = Eval.decode("1", "one", keyPairConditions);
 		assertTrue("Case decode-001: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode("2", "two", conditions);
+		result = Eval.decode("2", "two", keyPairConditions);
 		assertTrue("Case decode-002: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode("3", "three", conditions);
+		result = Eval.decode("3", "three", keyPairConditions);
 		assertTrue("Case decode-003: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode("", "empty", conditions);
+		result = Eval.decode("", "empty", keyPairConditions);
 		assertTrue("Case decode-004: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode(null, "empty", conditions);
+		result = Eval.decode(null, "empty", keyPairConditions);
 		assertFalse("Case decode-005: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode("", null, conditions);
+		result = Eval.decode("", null, keyPairConditions);
 		assertFalse("Case decode-006: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode(null, "", conditions);
+		result = Eval.decode(null, "", keyPairConditions);
 		assertFalse("Case decode-007: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode("null value", null, conditions);
+		result = Eval.decode("null value", null, keyPairConditions);
 		assertTrue("Case decode-009: " + result.getMessage(), result.isSuccess());
 		
-		result = Eval.decode(null, null, conditions);
+		result = Eval.decode(null, null, keyPairConditions);
 		assertTrue("Case decode-010: " + result.getMessage(), result.isSuccess());
 	}
 	

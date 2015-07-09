@@ -156,21 +156,21 @@ public class Eval {
 	 * 
 	 * @param input			The input parameter
 	 * @param compare		The string to be search into input
-	 * @param conditions	The key-pair conditions to be evaluated
+	 * @param keyPairConditions	The key-pair conditions to be evaluated
 	 * @return
 	 */
-	public static Result decode(String input, String compare, String[] conditions) {
+	public static Result decode(String input, String compare, String[] keyPairConditions) {
 		
 		Result result = new Result(null, false);
 		
 		try {
 			boolean match = false;
-			int totalComparations = conditions.length/2,
+			int totalComparations = keyPairConditions.length/2,
 				i = 0;		
 			
 			while (!match && i < totalComparations) { 
-				String value = conditions[i*2+0];
-				String returnValue = conditions[i*2+1];
+				String value = keyPairConditions[i*2+0];
+				String returnValue = keyPairConditions[i*2+1];
 				
 				match = ((input == null && value == null) && (compare == null && returnValue == null)) 
 						|| 
