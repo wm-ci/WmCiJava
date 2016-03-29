@@ -39,8 +39,9 @@ Utility Api backend is served on `com.wmci.util.Util` class, a total of 4 testin
 
 
 ## How to install
-Download `WmCiJava.jar` from [jar repository](https://scan.coverity.com/projects/5457) into your preferred `download_path`, and then copy the jar into `WmCi` package static directory.
+Clone this Git project from this repository into your preferred `your_temp_folder`, then recreate the Jar using Gradle building system, and then copy the jar into `WmCi` package static directory.
 
+[How to install Gradle if you don't have installed](https://docs.gradle.org/current/userguide/installation.html)
 ```
 cd /your_temp_folder
 git clone https://github.com/wm-ci/WmCiJava.git
@@ -53,7 +54,7 @@ find . -name *.jar
 # You will see the created Jar file:
 #    ./build/libs/WmCiJava-0.1.0.jar
 
-# Copy Jar to the jars folder on your IS Instance
+# Copy Jar to the your IS Instance
 cd your_IS_home_directory
 cp /your_temp_folder/./build/libs/WmCiJava-0.1.0.jar packages/WmCi/code/jars/static/WmCiJava.jar
 ```
